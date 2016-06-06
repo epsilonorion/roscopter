@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# If looking at transform,
+# If looking at transform in RVIZ
 # Red - x-axis (Roll About)
 # Green - y-axis (Pitch About)
 # Blue - z-axis (Yaw About)
@@ -45,7 +45,7 @@ pitch=0
 yaw=0
 attitude_received_flag=0
 
-pub = rospy.Publisher('imu', Imu)
+pub = rospy.Publisher('imu', Imu, queue_size=10)
 
 def attitude_callback(msg):
     global yaw, pitch, roll, attitude_received_flag
@@ -91,11 +91,11 @@ def imu_callback(msg):
                      "imu",
                      "base_link")
 
-        print("Transform with (%f, %f, %f)" % (roll,  pitch,  yaw))
-        print("Transform with (%f, %f, %f, %f)" % (q[0], q[1], q[2],  q[3]))
+        #print("Transform with (%f, %f, %f)" % (roll,  pitch,  yaw))
+        #print("Transform with (%f, %f, %f, %f)" % (q[0], q[1], q[2],  q[3]))
 
 if __name__ == '__main__':
     rospy.init_node("imupub")
-    rospy.Subscriber("/raw_imu", Mavlink_RAW_IMU, imu_callback)
-    rospy.Subscriber("/attitude", Attitude, attitude_callback)
+    rospy.Subscriber("raw_imu", Mavlink_RAW_IMU, imu_callback)
+    rospy.Subscriber("attitude", Attitude, attitude_callback)
     rospy.spin()

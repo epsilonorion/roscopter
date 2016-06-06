@@ -853,18 +853,18 @@ def watchdog_cb(msg):
 #     Mavlink responses
 #*******************************************************************************
 # Sensor messages
-pub_gps = rospy.Publisher('gps', NavSatFix)
-#pub_imu = rospy.Publisher('imu', Imu)
-pub_rc = rospy.Publisher('rc', roscopter.msg.RC)
-pub_state = rospy.Publisher('state', roscopter.msg.State)
-pub_vfr_hud = rospy.Publisher('vfr_hud', roscopter.msg.VFR_HUD)
-pub_attitude = rospy.Publisher('attitude', roscopter.msg.Attitude)
-pub_raw_imu =  rospy.Publisher('raw_imu', roscopter.msg.Mavlink_RAW_IMU)
-pub_status = rospy.Publisher('status', roscopter.msg.Status)
-pub_filtered_pos = rospy.Publisher('filtered_pos', roscopter.msg.FilteredPosition)
-pub_control_output = rospy.Publisher('controller_output', roscopter.msg.ControllerOutput)
-pub_current_mission = rospy.Publisher('current_mission', roscopter.msg.CurrentMission)
-pub_mission_item = rospy.Publisher('mission_item', roscopter.msg.MissionItem)
+pub_gps = rospy.Publisher('gps', NavSatFix, queue_size=10)
+#pub_imu = rospy.Publisher('imu', Imu, queue_size=10)
+pub_rc = rospy.Publisher('rc', roscopter.msg.RC, queue_size=10)
+pub_state = rospy.Publisher('state', roscopter.msg.State, queue_size=10)
+pub_vfr_hud = rospy.Publisher('vfr_hud', roscopter.msg.VFR_HUD, queue_size=10)
+pub_attitude = rospy.Publisher('attitude', roscopter.msg.Attitude, queue_size=10)
+pub_raw_imu =  rospy.Publisher('raw_imu', roscopter.msg.Mavlink_RAW_IMU, queue_size=10)
+pub_status = rospy.Publisher('status', roscopter.msg.Status, queue_size=10)
+pub_filtered_pos = rospy.Publisher('filtered_pos', roscopter.msg.FilteredPosition, queue_size=10)
+pub_control_output = rospy.Publisher('controller_output', roscopter.msg.ControllerOutput, queue_size=10)
+pub_current_mission = rospy.Publisher('current_mission', roscopter.msg.CurrentMission, queue_size=10)
+pub_mission_item = rospy.Publisher('mission_item', roscopter.msg.MissionItem, queue_size=10)
 
 ##******************************************************************************
 # Services for APM Commands

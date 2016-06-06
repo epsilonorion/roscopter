@@ -1,0 +1,11 @@
+<launch>
+  <node ns="apm" pkg="roscopter" type="driver.py" name="roscopter" output="screen" args="--device=/dev/sensors/apm0 --baudrate=115200 --enable-rc-control=true">
+  </node>
+
+  <node ns="apm" pkg="roscopter" type="imu_transform_publish.py" name="roscopter_transform" output="screen">
+  </node>
+
+  <node pkg="rviz" type="rviz" output="screen" name="rviz" args="-d $(find roscopter)/launch/transform.rviz" />
+
+</launch>
+
